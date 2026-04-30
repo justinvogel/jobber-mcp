@@ -1,6 +1,6 @@
 {
   "name": "jobber-mcp",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "MCP server exposing Jobber's GraphQL API (full CRUD, OAuth 2.0, stdio + HTTP transports)",
   "type": "module",
   "main": "dist/index.js",
