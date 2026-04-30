@@ -1,0 +1,87 @@
+{
+  "name": "jobber-mcp",
+  "version": "0.2.1",
+  "description": "MCP server exposing Jobber's GraphQL API (full CRUD, OAuth 2.0, stdio + HTTP transports)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/server.d.ts",
+  "bin": {
+    "jobber-mcp": "dist/index.js",
+    "jobber-mcp-http": "dist/http.js",
+    "jobber-mcp-auth": "dist/auth-cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    ".env.example"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js"
+    },
+    "./client": {
+      "types": "./dist/jobber-client.d.ts",
+      "import": "./dist/jobber-client.js"
+    },
+    "./auth": {
+      "types": "./dist/auth.d.ts",
+      "import": "./dist/auth.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:http": "node dist/http.js",
+    "dev": "tsx src/index.ts",
+    "dev:http": "tsx src/http.ts",
+    "auth": "tsx src/auth-cli.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build && npm test"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "jobber",
+    "getjobber",
+    "graphql",
+    "oauth",
+    "claude",
+    "anthropic",
+    "field-service",
+    "home-services"
+  ],
+  "author": "Soulcraft Systems",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinvogel/jobber-mcp.git"
+  },
+  "homepage": "https://github.com/justinvogel/jobber-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/justinvogel/jobber-mcp/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "dotenv": "^16.4.5",
+    "open": "^10.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.9"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
